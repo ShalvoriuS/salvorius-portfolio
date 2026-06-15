@@ -1,0 +1,27 @@
+services:
+  contact-api:
+    image: eclipse-temurin:17-jre-alpine
+    working_dir: /app
+    command: ["java", "-jar", "/app/contact-api.jar"]
+    volumes:
+      - ../apps/contact-api/target/contact-api-0.0.1-SNAPSHOT.jar:/app/contact-api.jar:ro
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "wget",
+          "--quiet",
+          "--spider",
+          "http://127.0.0.1:8080/api/actuator/health/readiness",
+        ]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  web:
+    image: nginx:1.29-alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ../apps/web/dist/web/browser:/usr/share/nginx/html:ro
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
