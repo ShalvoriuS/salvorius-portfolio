@@ -1,0 +1,59 @@
+.site-header {
+  position: sticky;
+  z-index: 10;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem clamp(1rem, 4vw, 4rem);
+  border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--background) 88%, transparent);
+  backdrop-filter: blur(1rem);
+}
+
+.brand {
+  color: var(--accent);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+nav {
+  display: flex;
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+nav a {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.locale-switcher {
+  display: flex;
+  gap: 0.25rem;
+}
+
+button {
+  padding: 0.4rem 0.55rem;
+  border: 1px solid transparent;
+  border-radius: 0.35rem;
+  color: var(--muted);
+  background: transparent;
+  cursor: pointer;
+}
+
+button[aria-pressed='true'] {
+  border-color: var(--accent);
+  color: var(--foreground);
+}
+
+@media (max-width: 52rem) {
+  nav {
+    display: none;
+  }
+}

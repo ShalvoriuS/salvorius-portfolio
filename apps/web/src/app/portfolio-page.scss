@@ -1,0 +1,82 @@
+:host {
+  display: block;
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 20;
+  top: 0.5rem;
+  left: 0.5rem;
+  padding: 0.75rem 1rem;
+  color: var(--background);
+  background: var(--accent);
+  transform: translateY(-160%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.hero,
+.contact {
+  display: grid;
+  min-height: 100dvh;
+  align-items: center;
+  padding: clamp(5rem, 10vw, 9rem) clamp(1rem, 7vw, 7rem);
+  scroll-margin-top: 5rem;
+}
+
+.hero > div,
+.contact > div {
+  width: min(100%, 72rem);
+  margin: 0 auto;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+h1,
+h2 {
+  max-width: 15ch;
+  margin: 1rem 0;
+  font-size: clamp(3rem, 10vw, 8rem);
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+}
+
+h2 {
+  font-size: clamp(2.3rem, 7vw, 5.5rem);
+}
+
+.role {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.summary,
+.contact p {
+  max-width: 62ch;
+  color: var(--muted);
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  line-height: 1.7;
+}
+
+.primary-action {
+  display: inline-flex;
+  margin-top: 1.5rem;
+  padding: 0.85rem 1rem;
+  border-radius: 0.4rem;
+  color: var(--background);
+  background: var(--accent);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.contact {
+  border-top: 1px solid var(--line);
+}

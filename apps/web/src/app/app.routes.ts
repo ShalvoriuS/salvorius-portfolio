@@ -1,21 +1,22 @@
 import { Routes } from '@angular/router';
-import { FoundationPage } from './foundation-page';
+import { PortfolioPage } from './portfolio-page';
 
 export const routes: Routes = [
   {
+    path: '',
+    pathMatch: 'full',
+    component: PortfolioPage,
+    data: { locale: 'es', restorePersistedLocale: true },
+  },
+  {
     path: 'es',
-    component: FoundationPage,
+    component: PortfolioPage,
     data: { locale: 'es' },
   },
   {
     path: 'en',
-    component: FoundationPage,
+    component: PortfolioPage,
     data: { locale: 'en' },
-  },
-  {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'es',
   },
   {
     path: '**',

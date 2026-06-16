@@ -13,13 +13,17 @@ describe('locale routes', () => {
   });
 
   it.each([
-    ['/es', 'Locale route: es'],
-    ['/en', 'Locale route: en'],
-  ])('renders the %s foundation route', async (url, expectedText) => {
+    ['/es', 'Desarrollador Full Stack'],
+    ['/en', 'Full Stack Developer'],
+  ])('renders complete localized content for %s', async (url, expectedText) => {
     const harness = await RouterTestingHarness.create();
 
     await harness.navigateByUrl(url);
 
     expect(harness.routeNativeElement?.textContent).toContain(expectedText);
+    expect(harness.routeNativeElement?.querySelectorAll('main section')).toHaveLength(5);
+    expect(harness.routeNativeElement?.querySelector('a[href^="mailto:"]')?.textContent).toContain(
+      url === '/es' ? 'Contactar por correo' : 'Contact by email',
+    );
   });
 });

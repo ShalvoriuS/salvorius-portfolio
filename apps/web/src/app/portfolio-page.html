@@ -1,0 +1,38 @@
+<a
+  class="skip-link"
+  href="#main-content"
+  (click)="focusMainContent($event)"
+  (keydown.enter)="focusMainContent($event)"
+>
+  {{ content.accessibility.skipToContent }}
+</a>
+<app-site-header [content]="content" [locale]="locale" (localeSelected)="selectLocale($event)" />
+
+<main id="main-content" tabindex="-1">
+  <section class="hero" id="profile" aria-labelledby="hero-title">
+    <div>
+      <p class="eyebrow">{{ content.hero.eyebrow }}</p>
+      <h1 id="hero-title">{{ content.hero.name }}</h1>
+      <p class="role">{{ content.hero.role }} · {{ content.hero.location }}</p>
+      <p class="summary">{{ content.hero.summary }}</p>
+      <a class="primary-action" [href]="content.actions.primary.href">
+        {{ content.actions.primary.label }}
+      </a>
+    </div>
+  </section>
+
+  @for (section of content.sections.slice(1, 4); track section.id) {
+    <app-story-section [section]="section" />
+  }
+
+  <section class="contact" id="contact" aria-labelledby="contact-title">
+    <div>
+      <p class="eyebrow">{{ content.sections[4].eyebrow }}</p>
+      <h2 id="contact-title">{{ content.sections[4].title }}</h2>
+      @for (paragraph of content.sections[4].body; track paragraph) {
+        <p>{{ paragraph }}</p>
+      }
+      <app-contact-actions [content]="content" />
+    </div>
+  </section>
+</main>
